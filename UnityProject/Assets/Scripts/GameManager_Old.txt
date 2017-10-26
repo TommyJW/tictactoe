@@ -1,0 +1,78 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class GameManager : MonoBehaviour
+{
+
+    public static GameManager Singleton;
+    public Board mainBoard;
+
+    public enum START_ROUND_SETTINGS_PLAYER { PLAYER_ONE, OTHER}
+    public enum START_ROUND_SETTINGS_PIECE { X, O}
+    public START_ROUND_SETTINGS_PLAYER myPlayerSettings;
+    public START_ROUND_SETTINGS_PIECE myPieceSettings;
+
+    public GameObject[] poolXGamePiece;
+    public GameObject[] poolOGamePiece;
+
+
+    private enum GAME_STATES { NONE, RUNROUND, VICTORY }
+    private bool P1_turnFlag;
+    private GAME_STATES currentGameState;
+
+    private int poolXIndex = 0;
+    private int poolOIndex = 0;
+
+    void OnStart()
+    {
+        Singleton = this;
+    }
+
+    /*
+		Start- 	Initialize game state, 
+				load the player profiles
+				Link up the mainBoard
+				Create an instance of the AI
+	*/
+    void Start()
+    {
+        currentGameState = GAME_STATES.NONE;
+        P1_turnFlag = true;
+       // PlayerHistory.Singleton.LoadProfiles();
+        BuildBoard();
+    }
+
+    void Update()
+    {
+
+    }
+
+    /*
+        Add to Andrew
+        called by a board to place a piece
+        */
+    public GameObject PlacePiece(Cell theCell)
+    {
+        return null;
+    }
+
+
+    /*
+    Determine if the board has a victor, if it does, pass back the value of the piece that won.
+    This function is called by AIManager too.
+    */
+    public GamePiece.PIECE_TYPES WhoSolvedBoard(Board theBoard)
+    {
+        return GamePiece.PIECE_TYPES.NONE;
+    }
+
+
+
+    private void BuildBoard()
+    {
+
+    }
+
+
+
+}
